@@ -1,45 +1,320 @@
 <%- layout("/layouts/boilerplate") -%>
   <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
   <%- include("../includes/tailwind.ejs") %>
-
-    <div class="index-main-div  max-sm:mt-[80px]" id="index-div">
-    <!-- font-size: 10vw;
+  <!-- <div class="bg-[#F3F2F5]"> -->
+        <div class="index-main-div  max-sm:mt-[80px]" id="index-div">
+      <!-- font-size: 10vw;
     font-family: fantasy;
     text-transform: uppercase; -->
-    <h3 class="text-center max-sm:text-[10vw] text-[10vw] font-fantasy uppercase head">All Listings</h3>
 
-    <div class="cards-main-div flex flex-wrap max-sm:w-[100%] justify-between gap-5 max-lg:justify-center max-lg:mt-[20px]">
+      <!-- <h3 class="text-center max-sm:text-[10vw] text-[10vw] font-fantasy uppercase heading-top">All Listings</h3> -->
+      <div class="filter-orignal filters my-4 flex items-center justify-evenly">
+        <!-- <div class="filter-inner-1 flex gap-[30px]"> -->
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-fire text-[20px] "></i>
+          <p>Trending</p>
+        </div>
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-bed text-[20px] "></i>
+          <p>Rooms</p>
+        </div>
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-mountain-city text-[20px] "></i>
+          <p>Iconic Cities</p>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="filter-inner-2 flex gap-[30px]"> -->
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-mountain text-[20px] "></i>
+          <p>Mountain</p>
+        </div>
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-person-swimming"></i>
+          <p>Pools</p>
+        </div>
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid fa-campground text-[20px] "></i>
+          <p>Camping</p>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="filter-inner-3 flex gap-[30px]"> -->
+        <div class="filter hover:opacity-1">
+          <i class="fa-solid  fa-tractor  text-[20px] "></i>
+          <p>Farms</p>
+        </div>
+        <div class="filter hover:opacity-1">
+          <i class="fa-regular fa-snowflake"></i>
+          <p>Arctic</p>
+        </div>
+        <div class="filter filter-beach hover:opacity-1 max-md:hidden">
+          <i class="fa-solid fa-umbrella text-[20px] "></i>
+          <p>Beach </p>
+        </div>
+        <div class="filter filter-cabins hover:opacity-1 max-md:hidden">
+          <i class="fa-solid fa-house-flag text-[20px] "></i>
+          <p>Cabins</p>
+        </div>
+        <div class="filter filter-omg hover:opacity-1 max-md:hidden">
+          <i class="fa-brands fa-space-awesome text-[20px] "></i>
+          <p>OMG!</p>
+        </div>
+        <!-- </div> -->
 
-      <% for(let listing of allListings) { %>
-        <a href="/listings/<%= listing._id %>" class="a-link relative single-card">
-          <div class="card max-sm:w-[100%] a-div">
-            <img src="<%=listing.image.url %><%=listing.image %>" class="rounded-[31px] max-sm:w-[100%] images-db" alt="Listing image"
-              style="height: 14rem;" />
-            <div class="card-img-overlay absolute flex justify-end top-[25px]  w-[100%] h-[15px] "> 
-              <span class=" rounded-[50%]  ">
-                <a href="/listings/liked/<%= listing._id %>">
-                <!-- <i class="fa-regular fa-heart  text-[1.4rem]  hover:text-[4rem] hover:translate-y-[-30px] transition duration-200 ease-in  hover:blur-[2px] transition-transform font-semibold text-[red]"></i> -->
-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shadow-[0_0_2px_5px_white]  text-[1rem] text-[black] bg-[white] rounded-[50%]  hover:scale-120 transition duration-200 ease-in   transition-transform font-semibold" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
-              </a>
-              </span>
+        <div class="filters-toggle-div">
+          <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" checked>
+            <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col   justify-between items-center filter-menu-div shadow-md mb-[10px] px-[20px]">
+        <div class="menu-filter-div ">
+
+          <h2>Menu</h2>
+
+
+          <i class="fa-solid fa-chevron-down z-50 text-[25px]"></i>
+          <i class="fa-solid fa-chevron-up z-50 text-[25px]"></i>
+
+        </div>
+        <div>
+          <div
+            class="filter-local-div filters my-4 px-[0] py-[0] flex gap-x-[11px] flex-wrap items-center justify-unset">
+            <!-- <div class="filter-inner-1 flex gap-[30px]"> -->
+            <div class="filter hover:opacity-1 ">
+              <i class="fa-solid fa-fire text-[20px] "></i>
+              <p>Trending</p>
             </div>
-            <div class="card-body">
-              <div class="card-text">
-                <a href="/listings/<%= listing._id %>">
-                  <%= listing.title %>
-                </a>
-                <p> &#8360; <%= listing.price.toLocaleString("en-PK") %> / 2 night
-                </p>
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid fa-bed text-[20px] "></i>
+              <p>Rooms</p>
+            </div>
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid fa-mountain-city text-[20px] "></i>
+              <p>Iconic Cities</p>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="filter-inner-2 flex gap-[30px]"> -->
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid fa-mountain text-[20px] "></i>
+              <p>Mountain</p>
+            </div>
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid fa-person-swimming"></i>
+              <p>Pools</p>
+            </div>
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid fa-campground text-[20px] "></i>
+              <p>Camping</p>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="filter-inner-3 flex gap-[30px]"> -->
+            <div class="filter hover:opacity-1">
+              <i class="fa-solid  fa-tractor  text-[20px] "></i>
+              <p>Farms</p>
+            </div>
+            <div class="filter hover:opacity-1">
+              <i class="fa-regular fa-snowflake"></i>
+              <p>Arctic</p>
+            </div>
+            <div class="filter filter-beach hover:opacity-1 max-md:hidden">
+              <i class="fa-solid fa-umbrella text-[20px] "></i>
+              <p>Beach </p>
+            </div>
+            <div class="filter filter-cabins hover:opacity-1 max-md:hidden">
+              <i class="fa-solid fa-house-flag text-[20px] "></i>
+              <p>Cabins</p>
+            </div>
+            <div class="filter filter-omg hover:opacity-1 max-md:hidden">
+              <i id="filterMenu" class="fa-brands fa-space-awesome text-[20px] "></i>
+              <p>OMG!</p>
+            </div>
+            <!-- </div> -->
 
+            <div class="filters-toggle-div">
+              <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
               </div>
             </div>
           </div>
-        </a>
-        <% } %>
+        </div>
+      </div>
+      <div class="search-bar-main w-[100%] items-center justify-center flex ">
+        <div class="search-bar-index hidden md:visible bg-white rounded-full shadow-lg px-4 py-0 w-[500px] max-w-full">
+          <form method="post" action="/listings/search" class="flex items-center justify-evenly w-100">
+            <input type="text" placeholder="Search destinations" name="search" required
+              class="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-400 px-3" />
+            <button class="bg-rose-500 hover:bg-rose-600 text-white rounded-[30px] p-3 shadow-md transition"
+              style="border-radius: 22px;">
+              <svg xmlns="http://www.w3.org/2000/svg" class=" h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        class="cards-main-div flex flex-wrap max-sm:w-[100%] justify-center  max-lg:justify-center max-lg:mt-[20px] ">
+        <% if (allListings && allListings.length) { %>
+          <% for(let listing of allListings) { %>
+            <a href="/listings/<%= listing._id %>" class="a-link relative single-card">
+              <div class="card max-sm:w-[100%] a-div">
+                <img src="<%=listing.image.url %>" class="rounded-[0px]  images-db" alt="Listing image"
+                  style="height: 14rem;" />
+                <div class="card-img-overlay absolute flex justify-end top-[25px]  w-[100%] h-[15px] ">
+                  <span class=" rounded-[50%]  ">
+                    <a href="/listings/liked/<%= listing._id %>">
+                      <!-- <i class="fa-regular fa-heart  text-[1.4rem]  hover:text-[4rem] hover:translate-y-[-30px] transition duration-200 ease-in  hover:blur-[2px] transition-transform font-semibold text-[red]"></i> -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="shadow-[0_0_2px_5px_white]  text-[1rem] text-[black] bg-[white] rounded-[50%]  hover:scale-120 transition duration-200 ease-in   transition-transform font-semibold"
+                        aria-hidden="true">
+                        <path
+                          d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
+                        </path>
+                      </svg>
+                    </a>
+                  </span>
+                </div>
+                <div class="card-body  px-[0px] py-[3px]">
+                  <div class="card-text gst-div">
+                    <p class="">
+                      <i class="fa-solid fa-hand-holding-dollar"></i> from &#8360; <%=
+                        listing.price.toLocaleString("en-PK") %> / 2 night
+                    </p>
+                    <a href="/listings/<%= listing._id %>">
+                      <p><i class="fa-solid fa-pencil"></i>
+                        <%= listing.title %>
+                      </p>
+                    </a>
+                    <p class="text-info"><i class="fa-solid fa-plus"></i> 18% GST</p>
+                    <% if (listing.orderType || listing.bedrooms ) { %>
+                      <p>
+                        <i class="fa-solid fa-house"></i>
+                        <span>
+                          <%= listing.orderType %>
+                        </span>
+                        <i class="fa-solid fa-bed"></i>
+                        <span>
+                          Bedrooms <%= listing.bedrooms %>
+                        </span>
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>
+                          Guests <%= listing.guests %>
+                        </span>
+                      </p>
+                      <% } %>
+                        <p>
+                          <span> <i class="fa-solid fa-location-dot"></i>
+                            <%= listing.country %>
+                          </span>,<span>
+                            <%= listing.location %>
+                          </span>
+                        </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <% } %>
+              <% } else { %>
+                <div class="blink-card-main">
+                  <div class="blink-card-p-1" style="height: 50%; border-radius: 0px ;">
+
+                  </div>
+                  <div class="blink-card-p-2">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                  </div>
+
+                </div>
+                <div class="blink-card-main">
+                  <div class="blink-card-p-1" style="height: 50%; border-radius: 0px ;">
+
+                  </div>
+
+                  <div class="blink-card-p-2">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                  </div>
+
+                </div>
+                <div class="blink-card-main">
+                  <div class="blink-card-p-1" style="height: 50%; border-radius: 0px ;">
+
+                  </div>
+
+                  <div class="blink-card-p-2">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                  </div>
+
+                </div>
+                <div class="blink-card-main">
+                  <div class="blink-card-p-1" style="height: 50%; border-radius: 0px ;">
+
+                  </div>
+
+                  <div class="blink-card-p-2">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                  </div>
+
+                </div>
+                <% } %>
+      </div>
+
+
     </div>
-    <div class="row">
-      <form method="GET" action="/listings/new" class="col-12 mb-3">
-        <button class="btn btn-outline-danger fs-5">Create New Listing</button>
-      </form>
-    </div>
-    </div>
+
+
+
+    <form method="GET" action="/listings/new" class="flex w-100 mt-5 justify-center mb-5">
+      <button class="btn btn-outline-danger fs-5">Create New Listing</button>
+    </form>
+    <!-- </div> -->
+
+    <script>
+      let taxSwitch = document.querySelector('#switchCheckDefault')
+      // let filterMenu = document.getElementById("filterMenu")
+      let filterOnMenu = document.querySelector(".fa-chevron-down")
+      let filterOffMenu = document.querySelector(".fa-chevron-up")
+      taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("text-info")
+        for (info of taxInfo) {
+          if (info.style.display !== 'inline') {
+            info.style.display = 'inline';
+          }
+          else {
+            info.style.display = 'none'
+          }
+        }
+      })
+      filterOnMenu.addEventListener("click", () => {
+        document.querySelector(".filter-local-div").style.display = 'flex';
+        filterOnMenu.style.display = 'none'
+        filterOffMenu.style.display = 'block'
+      })
+      filterOffMenu.addEventListener("click", () => {
+        document.querySelector(".filter-local-div").style.display = 'none';
+        filterOnMenu.style.display = 'block'
+        filterOffMenu.style.display = 'none'
+
+      })
+
+
+    </script>

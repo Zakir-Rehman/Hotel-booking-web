@@ -1,11 +1,13 @@
 <%- layout("/layouts/boilerplate") -%>
     <div class="index-main-div max-sm:mt-[80px]">
-        <h3 class="text-start   text-[20px] mt-[30px] mb-[30px] uppercase">Favourited Listing - <span
-                class="text-[2.7rem]">
+        <h3 class="whishlist-div">
+            Wishlists -
+            <span class="likedCount">
                 <%= likedCount %>
-            </span></h3>
+            </span>
+        </h3>
         <% if (likedCount===0) { %>
-            <div class="text-center mt-10">
+            <div class="text-center mt-10 mb-5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-heart mx-auto mb-6 text-gray-400">
@@ -21,13 +23,12 @@
             </div>
             <% } %>
 
-                <div class="flex flex-wrap max-sm:w-[100%] justify-start gap-5 max-lg:justify-center max-lg:mt-[20px]">
+                <div  class="cards-main-div flex flex-wrap max-sm:w-[100%] justify-start gap-5 max-lg:justify-center max-lg:mt-[20px]">
                     <% for(let list of listings) { %>
                         <a href="/listings/<%= list._id %>" class="a-link relative">
                             <div class="card max-sm:w-[100%] a-div">
-                                <img src="<%=list.image.url %><%=list.image %>"
-                                    class="rounded-[31px] max-sm:w-[100%] images-db" alt="Listing image"
-                                    style="height: 14rem;" />
+                                <img src="<%=list.image.url %>" class="rounded-[31px] max-sm:w-[100%] images-db"
+                                    alt="Listing image" style="height: 14rem;" />
                                 <div class="card-img-overlay absolute flex justify-end top-[25px]  w-[100%] h-[15px] ">
                                     <span class=" rounded-[50%]  ">
                                         <a href="/listings/disliked/<%= list._id %>">
@@ -48,14 +49,41 @@
 
                                     </span>
                                 </div>
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        <a href="/listings/<%= list._id %>">
-                                            <%= list.title %>
-                                        </a>
-                                        <p> &#8360; <%= list.price.toLocaleString("en-PK") %> / 2 night
+                                <div class="card-body max-sm:border px-[3px] py-[3px] border-[#ccc] rounded-[20px] ">
+                                    <div class="card-text gst-div">
+                                        <p class="">
+                                            <i class="fa-solid fa-hand-holding-dollar"></i> from &#8360; <%=
+                                                list.price.toLocaleString("en-PK") %> / 2 night
                                         </p>
-
+                                        <a href="/listings/<%= list._id %>">
+                                            <p><i class="fa-solid fa-pencil"></i>
+                                                <%= list.title %>
+                                            </p>
+                                        </a>
+                                        <p class="text-info"><i class="fa-solid fa-plus"></i> 18% GST</p>
+                                        <% if (list.orderType || list.bedrooms ) { %>
+                                            <p>
+                                                <i class="fa-solid fa-house"></i>
+                                                <span>
+                                                    <%= list.orderType %>
+                                                </span>
+                                                <i class="fa-solid fa-bed"></i>
+                                                <span>
+                                                    Bedrooms <%= list.bedrooms %>
+                                                </span>
+                                                <i class="fa-solid fa-user-group"></i>
+                                                <span>
+                                                    Guests <%= list.guests %>
+                                                </span>
+                                            </p>
+                                            <% } %>
+                                                <p>
+                                                    <span> <i class="fa-solid fa-location-dot"></i>
+                                                        <%= list.country %>
+                                                    </span>,<span>
+                                                        <%= list.location %>
+                                                    </span>
+                                                </p>
                                     </div>
                                 </div>
                             </div>

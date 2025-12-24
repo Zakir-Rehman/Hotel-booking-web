@@ -24,7 +24,7 @@ const sampleListings = [
     country: "United States",
   },
   {
-    title: "Mountain Retreat",
+    title: "Mountain Retreatk",
     description:
       "Unplug and unwind in this peaceful mountain cabin. Surrounded by nature, it's a perfect place to recharge.",
     image: {
@@ -349,4 +349,4 @@ const sampleListings = [
   },
 ];
 
-module.exports = sampleListings;
+module.exports = {data : sampleListings};

@@ -1,10 +1,19 @@
-<% layout("/layouts/bolierplate.ejs") %>
+<% layout("/layouts/boilerplate.ejs") %>
+    <div class="flex items-center justify-center font-[sans-serif] ">
+        <div class="bg-[#F8D7DA] w-[80%] rounded-[20px] px-[34px] py-[28px] error-div ">
+            <h1>Error</h1>
+            <% if (status && error && message) { %>
+                <div class="text-[25px] text-[red]"> <span class="text-[24px] text-[black]">Status : </span><%= status %>
+                </div>
+                <div><span class="text-[24px]">Error : </span> <%= error %>
+                </div>
+                <div> <span class="text-[24px]">Message : </span><%= message %>
+                </div>
 
-<body>
-    
-    <div class="row">
-    <div class="alert alert-danger offset-3" role="alert">
-zakir
+                <% } else { %>
+                    <div class="text-[24px]">Message : <%= message %>
+                    </div>
+                    <% } %>
+
+        </div>
     </div>
-</div>
-</body>

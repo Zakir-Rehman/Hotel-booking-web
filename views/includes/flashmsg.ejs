@@ -1,18 +1,55 @@
 <% if(success && success.length){ %>
-  <div  class="mt-[41px]  alert alert-success alert-dismissible fade show col-6  offset-3 my-2" role="alert">
-    <%= success %>
-      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"> </button>
-  </div> 
+  <div class="custom-alert" id="myAlert">
+    <div class="inner-alert">
+      <span class="alert-icon">
+        <i class="fa-regular fa-circle-check"></i>
+      </span>
+      <span class="alert-text">
+        <%= success %>
+      </span>
+    </div>
+    <i class="fa-solid fa-xmark alert-close " onclick="closeAlert()"></i>
+  </div>
+
   <% } %>
+
     <% if(error && error.length){ %>
-      <div class="alert mt-[41px]  alert-danger alert-dismissible fade show col-6  offset-3 my-2" role="alert">
-        <%= error %>
-          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"> </button>
+      <div class="custom-alert " id="myAlert">
+        <div class="inner-alert">
+          <span class="alert-icon">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </span>
+          <span class="alert-text">
+            <%= error %>
+          </span>
+        </div>
+        <i class="fa-solid fa-xmark alert-close " onclick="closeAlert()"></i>
       </div>
+
       <% } %>
-        <% if( delet && delet.length){ %>
-          <div class="alert mt-[41px]  alert-danger alert-dismissible fade show col-6  offset-3 my-2" role="alert">
-            <%= delet %>
-              <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"> </button>
+        <% if(delet && delet.length){ %>
+          <div class="custom-alert" id="myAlert">
+            <div class="inner-alert">
+              <span class="alert-icon">
+                <i class="fa-regular fa-trash-can"></i>
+              </span>
+              <span class="alert-text">
+                <%= delet %>
+              </span>
+            </div>
+            <i class="fa-solid fa-xmark alert-close " onclick="closeAlert()"></i>
           </div>
+
           <% } %>
+            <script>
+              function closeAlert() {
+                const alert = document.getElementById("myAlert");
+                alert.remove();
+              }
+
+              // Auto remove after 3.5 seconds
+              setTimeout(() => {
+                const alert = document.getElementById("myAlert");
+                if (alert) alert.remove();
+              }, 5000);
+            </script>

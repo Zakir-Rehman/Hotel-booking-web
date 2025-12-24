@@ -3,7 +3,7 @@
     <div class="row mt-3 mb-3 top-margin-div">
       <div class="col-8 offset-2">
         <h3>Edit your Listing</h3>
-        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="row g-3 needs-validation" novalidate>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
@@ -18,12 +18,14 @@
            <div class="invalid-feedback">Please fill short description! </div>
             <div class="valid-feedback">Amazimg description! </div>
           </div>
-          <div class="mb-3">
-            <label for="title" class="form-label">Image</label>
-            <input name="listing[image]" value="<%= listing.image.url %>" type="text" class="form-control" required />
-            <div class="invalid-feedback tt-uppercase">Image is required! </div>
-            <div class="valid-feedback tt-uppercase">Add the image! </div>
-          </div>
+           <div class="mb-3">
+             <label for="imageFileOrignal" class="form-label">Orignal image</label>
+            <img src=<%= originalImageUrl %> alt="" id='imageFileOrignal' class="h-[264px] w-[50%] rounded-[20px]" />
+         </div>
+           <div class="mb-3">
+            <label for="imageFile" class="form-label">Upload new image</label>
+            <input name="listing[image]" id="imageFile" placeholder="Choose Image" type="file" class="form-control"  />
+         </div>
           <div class="row">
             <div class="mb-3 col-md-4">
               <label for="title" class="form-label">Price</label>

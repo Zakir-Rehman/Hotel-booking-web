@@ -13,40 +13,103 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+ 
     <link
         href="https://fonts.googleapis.com/css2?family=Michroma&family=New+Rocker&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+        integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- map css and script -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+    <link rel="stylesheet" href="/css/rating.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes slideDown {
+            0% {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-50%, 0%);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-down {
+            animation: slideDown 0.5s ease-out forwards;
+        }
+    </style>
+
 </head>
 
 <body>
-    <link rel="stylesheet" href="/css/style.css">
+
 
     </head>
 
     <body>
         <%- include("../includes/navbar.ejs") %>
 
-            <div class="cont1 w-[100%] max-md:p-[0px] min-h-[82vh]">
+            <div class="cont1 px-[0] w-[100%] max-md:p-[0px] px-0 max-md:p-0">
+                <!-- data-scroll-container -->
                 <%- include("../includes/flashmsg.ejs") %>
                     <%- body %>
+                        <div class="quick-panel">
+                            <i class="fa-solid fa-plus fab-btn"></i>
+
+                            <div class="fab-panel">
+                                <div class="plusSlider-div"><i class="fa-brands fa-facebook"></i> <a target="_blank"
+                                        href="https://www.facebook.com/inoxent.zakir.58">Facebook</a> </div>
+                                <div class="plusSlider-div"><i class="fa-brands fa-whatsapp"></i> <a target="_blank"
+                                        href="https://wa.me/923150239091">Whatsapp</a> </div>
+                                <div class="plusSlider-div"><i class="fa-brands fa-linkedin"></i> <a target="_blank"
+                                        href="linkedin.com/in/zakir-rehman-24552136b">Linkedin</a> </div>
+                            </div>
+                        </div>
+                        <!-- <div id="offlineMessage" class="hidden fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md
+           bg-red-600 text-white text-center py-3 font-semibold z-50 
+           rounded-xl shadow-lg animate-slide-down">
+                            ⚠️ You’re offline — Please check your internet connection
+                        </div> -->
+
+
             </div>
             <%- include("../includes/footer.ejs") %>
-                <script src="/js/script.js"></script>
+               
+                <script src="/js/jquery-3.7.1.min.js"></script>
+                <script src="/js/jquery.js"></script>
+
+
+                <!-- Popper -->
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
                     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
                     crossorigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-                    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-                    crossorigin="anonymous"></script>
+
+                <!-- Bootstrap JS -->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                     crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-                <script src="/public/script.js"></script>
+
+                <!-- GSAP ScrollTrigger -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+                <!-- Your custom script -->
+                <script src="/js/script.js"></script>
     </body>
+
+</body>
 
 </html>

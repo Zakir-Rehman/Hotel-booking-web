@@ -1,0 +1,149 @@
+<%- layout("/layouts/boilerplate") -%>
+  <script>
+     let geo = <%- JSON.stringify(listing.geometry || {}) %>;
+  </script>
+  <div class="row top-margin-div">
+    <div class="col-8  ">
+      <h3 class="fs-5 my-3  text-wrap">
+        <%= listing.title %>
+      </h3>
+    </div>
+
+    <div class="card col-8 max-md:w-[100%]">
+      <img src="<%=listing.image.url %>" class="card-img-top show-image max-sm:w-[100%]" alt="Listing image" />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <div class="card-text">
+          <p class="fs-6 flex-col card-text-inner-owner-p flex flex-row gap-[10px] items-center">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACUCAMAAAAj+tKkAAAAP1BMVEWoqa3///+kpamoqav8/PyhoqesrbD4+Pnr6+zz8/Tu7u/T1Na8vb+hoqWxsrS2t7rj4+Td3d7IycrOztDDw8UhP5KLAAAEA0lEQVR4nO2cyXLjMAxERVD7vv3/tw5lx5ETS7ZAoqFMld4tl1QXSYAA1HQUXVxcXFxcXFxcXFxcHMQ6ztbwf/OX14/IqUtvRNb9RWcLeoaSqB6rvsjMjbjIq7FOk7+iMUm6ofzSthKXfe2Enw5RW8W/xX2LHLro5GVs2mFX3o2+O3UV7Qd5yyr26SmLeEso40d5N6YzBC6nrz8kz1FGJ+wz1S+B+2afR9JO4c3B7f3eZs2D6M4fVSx5jkE1VJqBq88lHEWFzcTXZ0ylppC89OntMnV++oyZVbINpYWvwKzVWEN7OD+/kitkQxr99bl0iN9kCtFnTArX55EBn4Fnw45xA28R11h9oQvo4gR7CgNP4AL0FCbsGuGVvgEKJO8cvVIAl5BqXhG4zYgLZH4VuMUA0xdFuYRA4B63EvqM6WACaxmBsEMocwSBiaYROYLuEMIECmTBhbgBTTpJIgsuuP+FqVyF9C1hDBGYigmkPy6wBuWZS2AwUlHcgQRaKYGoaiEJbJgexCB9UVPKCMxQfVMS3NLdyVF3cdjUY6WCtU3ec7ef4Hp3/8HbMzGu5A+ZvK3kMH1ChxA5q24FMmEMu+gimaK/RA7g/OfnKzN0Qhg+nImxX+1oDhWI/miXBp7CogX1Sw9Cl3ACtSPf2CQoWZcNquNcCcmFMW5utBKyyTqftf0n/RqfjG8HyLOyLvDyvuwoqZdCl2G0IK9AQTWb2wrZV16mqW/5qs28UUpdfU4hb+JfpqTuzkym44MGPcPHM8188CBm2BJwH2oOjf2H5iR9STR/tg86+tEiP3DuQTQeTjXF5IJqCRK9QKGUESIL092HqSTQNjP7sisVHCkPqPUqWnOVXG0Xb5nnpDWebv50cMlPaYg1ajFvgZumQFfADA6TZN92fox4wOZEgflbjhsPUisyRS86wmRssjIDVlNgzPMU6itbyRAjQkrF9GG8ovwu5K1C6XNo/TrNfQrhe0/K8PGkUFTg8ZcZx5H7GmGjY6U9F7E7xZKQJeo3o1SFKPF1ZAupaSGJB8iDUiTRSPhW9xiCN9m6G07KqbCFwJ1nYRu8UAbXXsgNXgjPNVh9xgSWXrgIfhAWyTQjI+ROmKNVuIbZIgtaQLy+IJeKhHX/M5l3qvF9P8fFe0AsXUXv4eud1zmBC56TOSnb9GdirzCRcHgcxeszAKIP2SP3aUFlG+H3+Dxm08oxdyr+CpJSjrmT8QUKvb45Cru09nnFHgL7EYzONbzCvZCtyAs6DsxUiBl2vIP7Ql8xS99h9net9g5zX9upFTIrLNuUlCmeA8tAL/XugQOv5tLXZwzDOaVXSz/DOITogcw2jNsuzAbqC+N3NrTauZ8w7HtyX+U4ZJtl9T8q6zdltJ8NOQAAAABJRU5ErkJggg==" alt="">
+            <span class="fs-5 ">Owned by <%= listing.owner.username %></span>
+
+          </p>
+          <p class="fs-4  flex gap-2  fw-normal font-[sans-serif]">
+            <span class="font-[fantasy] fs-3">Place name :</span>
+            <%= listing.title %>
+          </p>
+          <p class="fs-2  flex gap-2  "><span class="font-[fantasy] fs-3">Place price :</span> &#8360; <%= listing.price
+              %>
+          </p>
+          <hr>
+
+          <p class="fs-6 flex-col mt-5  flex gap-y-2  ">
+            <span class="fs-3 font-[fantasy] ">Place details :</span>
+            <%= listing.description %>
+          </p>
+          <p class="fs-3  flex gap-2  ">
+            <span class="font-[fantasy] fs-3">City name : </span>
+            <%= listing.location %>
+          </p>
+          <p class="fs-3 flex gap-2 ">
+            <span class="font-[fantasy] fs-3">Country name :</span>
+            <%= listing.country%>
+          </p>
+
+        </div>
+      </div>
+
+      <div class="btns d-flex gap-3 mt-[30px]">
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-danger text-nowrap" style="z-index: 10;">Edit
+          this
+          Listing</a>
+
+        <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" style="z-index: 10;">
+          <button class="btn  btn-outline-danger text-nowrap">Delete this listing</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <hr>
+  <div class="col-8 offset-2 mb-3 mt-3">
+    <h4>Leave a Review</h4>
+    <form action="/listings/<%=listing._id%>/reviews" method="post" class="needs-validation" novalidate>
+
+      <!-- <div class="mb-2"> -->
+        <!-- <input type="range" class="form-label form-range"  min="1" max="5" id="rating" name="review[rating]"> -->
+        <!-- <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" required>
+        <output for="range4" id="rangeValue" aria-hidden="true"></output> -->
+        <fieldset class="starability-slot mb-2">
+          <legend>Rating</legend>
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" min="1" max="5" value="0" checked
+            aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      <!-- </div> -->
+
+      <div class="form-floating">
+        <textarea required name="review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+        <label for="comment" for="floatingTextarea">Comments</label>
+        <div class="invalid-feedback">Please submit</div>
+        <div class="valid-feedback">Thanks for review</div>
+      </div>
+
+      <button class="btn  btn-outline-danger mt-3">Submit</button>
+    </form>
+    <hr>
+    <% if (listingCount) { %>
+      <h4 class="align-text-center d-inline-block">Total Reviews
+        <% if (listingCount && listingCount> 0) { %>
+          <p class="d-inline-block">Count - <%= listingCount %>
+          </p>
+          <% }else{ %>
+            <%= listingCount %>
+              <% } %>
+      </h4>
+
+      <% } %>
+
+        <div class="row">
+          <% for(review of listing.reviews){ %>
+            <div class="card col-6 mb-3 ">
+              <div class="card-body border">
+                <div class="card-title border-bottom text-danger"> User name </div>
+                <p class="card-text">
+                  <%=review.comment %>
+                </p>
+                <p class="card-text flex  fs-3 items-center gap-1">
+                  <span class="fs-4 font-[fantasy]">Rating star : </span>
+                <p class="starability-result" data-rating=<%=review.rating %>>
+                  Rated: 3 stars
+                </p>
+                </p>
+
+                <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="m-0 p-0"
+                  method="post"><button class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+
+            <% }%>
+            <% if (listing && listing.geometry.latitude ) { %>
+              <h1>Where you`ll be</h1>
+              <div id="map" style="height: 350px;"></div>
+           <% } %>
+        </div>
+  </div>
+
+  <script>
+    // This is an example script, please modify as needed
+    const rangeInput = document.getElementById('rating');
+    const rangeOutput = document.getElementById('rangeValue');
+
+    // Set initial value
+    rangeOutput.textContent = rangeInput.value;
+
+    rangeInput.addEventListener('input', function () {
+      rangeOutput.textContent = this.value;
+    }); 
+  </script>
+  <!-- <script src="/js/map.js"></script> -->
+
