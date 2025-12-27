@@ -1,7 +1,7 @@
 {
-  "engines":{
-    "node":"22.18.0"
-  },
+"engines": {
+  "node": ">=18"
+},
   "name": "major-projects",
   "version": "1.0.0",
   "description": "Zakir's dev studio complate hotel booking website | Full Stack Web Application",
