@@ -104,7 +104,7 @@ app.use((err, req, res, next) => {
   });
 });
 // const PORT = process.env.PORT || 3000;
-const PORT = 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("server is listening to port ", PORT);
   // console.log(`Server running on http://0.0.0.0:${PORT}`);
