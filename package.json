@@ -7,7 +7,7 @@
   "description": "Zakir's dev studio complate hotel booking website | Full Stack Web Application",
   "main": "app.js",
   "scripts": {
-    "server": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
